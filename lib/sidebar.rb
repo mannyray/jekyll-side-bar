@@ -5,29 +5,29 @@ module Jekyll
     def toc(text)
         doc = Nokogiri::HTML(text)
 
-        # Find the content between the TOC comments
-        toc_section = doc.inner_html[/<!--toc_start-->(.*?)<!--toc_end-->/m, 1]
+        # Process each TOC section
+        doc.inner_html = doc.inner_html.gsub(/(<!--toc_start-->)(.*?)(<!--toc_end-->)/m) do |match|
+          toc_section = $2
 
-        # Parse the TOC section to find <h2> headers
-        toc_doc = Nokogiri::HTML(toc_section)
-        h2_headers = toc_doc.css('h2')
+          # Parse the TOC section to find <h2> headers
+          toc_doc = Nokogiri::HTML(toc_section)
+          h2_headers = toc_doc.css('h2')
 
-        # Create an array of links to the headers
-        header_links = h2_headers.map do |header|
-          id = header['id']
-          "<li><a href=\"##{id}\">#{header.text}</a></li>"
-        end
+          # Create an array of links to the headers
+          header_links = h2_headers.map do |header|
+            id = header['id']
+            "<li><a href=\"##{id}\">#{header.text}</a></li>"
+          end
 
-        # Create the Table of Contents
-        table_of_contents = <<-HTML
+          # Create the Table of Contents
+          table_of_contents = <<-HTML
         <h2>Table of Contents</h2>
         <ul>
           #{header_links.join("\n  ")}
         </ul>
         HTML
 
-        # Insert the TOC into the original HTML
-        doc.inner_html = doc.inner_html.sub(/(<!--toc_start-->)(.*?)(<!--toc_end-->)/m) do |match|
+          # Insert the TOC into the original HTML
           "#{$1}\n#{table_of_contents}#{$2}\n#{$3}"
         end
 
