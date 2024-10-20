@@ -35,6 +35,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur sem
 
 Aenean ut mauris lorem. Donec vitae pellentesque nisi. Sed iaculis sodales mauris. Morbi eget efficitur lacus. Ut non interdum nisi. Vivamus erat orci, tempor et malesuada quis, congue id purus. Donec egestas neque eget augue ultrices bibendum. In ut dui quis ipsum finibus egestas. Aliquam in sapien ac turpis venenatis ultrices elementum pulvinar ante. Sed in hendrerit ipsum, sit amet tempus diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse tempus nisi quis feugiat mollis.
 
+<!--toc_start-->
+
 ## Just another heading 
 
 Mauris at metus sit amet risus eleifend lacinia ac eget dolor. Donec sed enim euismod, gravida nulla ut, scelerisque sem. Ut dapibus augue sed elit vulputate suscipit. Ut a dui vitae lorem pretium ultrices ac a leo. Proin odio enim, tincidunt eu dictum sed, pulvinar at urna. Pellentesque vel ligula a ligula lobortis blandit quis ac arcu. Etiam cursus dapibus molestie.
@@ -60,6 +62,9 @@ Aenean ut mauris lorem. Donec vitae pellentesque nisi. Sed iaculis sodales mauri
 Mauris at metus sit amet risus eleifend lacinia ac eget dolor. Donec sed enim euismod, gravida nulla ut, scelerisque sem. Ut dapibus augue sed elit vulputate suscipit. Ut a dui vitae lorem pretium ultrices ac a leo. Proin odio enim, tincidunt eu dictum sed, pulvinar at urna. Pellentesque vel ligula a ligula lobortis blandit quis ac arcu. Etiam cursus dapibus molestie.
 
 Integer dignissim sit amet nulla eu aliquet. Praesent porttitor dolor in augue cursus, non ultricies arcu pulvinar. Vestibulum at nibh faucibus, aliquet lectus nec, iaculis metus. Vestibulum vestibulum urna id risus suscipit rhoncus. Integer ac vestibulum turpis, at tincidunt elit. Vestibulum at mattis nunc. Pellentesque venenatis pellentesque tempus. Praesent malesuada porttitor leo et tristique. Sed eu mauris vel nunc consectetur aliquam. Integer congue nisi justo, id vestibulum quam tristique non. Nulla efficitur felis erat.
+
+
+<!--toc_end-->
 
 ## Conclusion
 
