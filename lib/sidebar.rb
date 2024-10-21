@@ -21,14 +21,18 @@ module Jekyll
 
           # Create the Table of Contents
           table_of_contents = <<-HTML
-        <h2>Table of Contents</h2>
-        <ul>
-          #{header_links.join("\n  ")}
-        </ul>
-        HTML
+          <div class="toc-section">
+            <div class="toc">
+              <h2>Table of Contents</h2>
+              <ul>
+                #{header_links.join("\n  ")}
+              </ul>
+            </div>
+            <div class="content">#{$2}</div>
+          </div>
+          HTML
 
-          # Insert the TOC into the original HTML
-          "#{$1}\n#{table_of_contents}#{$2}\n#{$3}"
+          table_of_contents
         end
 
         # Output the modified HTML

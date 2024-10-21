@@ -3,6 +3,25 @@ layout: default
 ---
 <div class="post">
 
+    <style>
+        .toc {
+          width: 15%
+          height: 100%; /* Full height */
+          overflow-y: auto; /* Scroll if necessary */
+          background: #f9f9f9;
+        }
+        .content {
+          padding: 10px;
+          width: 75%; /* Remaining width */
+        }
+        .toc-section {
+          display: flex;
+          margin-bottom: 20px; /* Space between sections */
+        }
+      </style>
+    
+    
+
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
