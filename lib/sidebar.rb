@@ -21,18 +21,22 @@ module Jekyll
 
           # Create the Table of Contents
           table_of_contents = <<-HTML
-          <div class="toc-section">
-            <div class="toc">
-              <h2>Table of Contents</h2>
-              <ul>
-                #{header_links.join("\n  ")}
-              </ul>
-            </div>
-            <div class="content">#{$2}</div>
-          </div>
+          <table>
+            <tr>
+              <td class="toc">
+                <div class="sticky-top">
+                    <h2>Table of Contents</h2>
+                    <ul>
+                      #{header_links.join("\n  ")}
+                    </ul>
+                </span>
+              </td>
+              <td class="content">#{
+                toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "<hr>#{h}" }
+              }</td>
+            </tr>
+          </table>
           HTML
-
-          table_of_contents
         end
 
         # Output the modified HTML
