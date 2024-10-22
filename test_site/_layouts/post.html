@@ -4,7 +4,7 @@ layout: default
 <div class="post">
     <style>
         .toc {
-          width: 15%
+          width: 25%
           background: #f9f9f9;
           vertical-align:top;
           border: none;
@@ -15,16 +15,69 @@ layout: default
           border: none;
         }
         .sticky-top {
-          background: #f9f9f9;
-          position: -webkit-sticky;
-          position: sticky;
-          top: 0;
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            background: #fff; /* Background for the sticky menu */
+        }
+        #menu {
+            list-style-type: none; /* Remove bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+        #menu li {
+            margin: 5px 0; /* Space between bars */
+            position: relative
+        }
+        #menu a {
+            display: block; /* Make the link a block element */
+            padding: 2px; /* Space inside the bars */
+            background: #f0f0f0; /* Light gray background for bars */
+            text-decoration: none; /* Remove underline */
+            color: #333; /* Text color */
+            border-radius: 4px; /* Rounded corners */
+            transition: background 0.3s; /* Smooth background transition */
+        }
+        #menu a:hover {
+            background: #e0e0e0; /* Darker gray on hover */
         }
         .active {
             font-weight: bold;
             color: blue; /* Change the color for highlighting */
         }
+        .active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            border-radius: 4px;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: #007bff; /* Active background color */
+            transform: scaleX(0); /* Start with no width */
+            transform-origin: left; /* Scale from the left */
+            animation: load 0.5s forwards; /* Loading animation */
+            background: rgba(0, 123, 255, 0.5); /* Semi-transparent active background color */
+        }
+        @keyframes load {
+            0% {
+                transform: scaleX(0); /* Start with no width */
+            }
+            70% {
+                transform:  scaleX(1); /* Scale to full width */
+            }
+            85% {
+                transform: scaleX(0.95); /* Bounce effect */
+            }
+            100% {
+                transform: scaleX(1); /* Return to full width */
+            }
         .section {
+            border: 0;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
         }
   </style>
     
@@ -39,19 +92,20 @@ layout: default
                 let current = ''
                                 
                 sections.forEach(section => {
+                    console.log(section)
                     const sectionTop = section.getBoundingClientRect().top;
                     const sectionBottom = section.getBoundingClientRect().bottom;
                                         
-                    if (sectionTop >= 0) {
+                    if (sectionTop >= 50) {
                         if(currentSection == ''){
                             currentSection = section
                         }
-                        else if(sectionTop < currentSection.getBoundingClientRect().top ){
+                        else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
                             currentSection = section
                         }
                         current = currentSection.getAttribute('id');
                     }
-                    else if (sectionBottom >= 0 ){
+                    else if (sectionBottom >= 50 ){
                         if(currentSection == ''){
                             currentSection = section
                         }
@@ -60,7 +114,6 @@ layout: default
                         }// we need to adjust this based on if the next one is in view
                         current = currentSection.getAttribute('id');
                     }
-                    
                 });
                 
                 links.forEach(link => {

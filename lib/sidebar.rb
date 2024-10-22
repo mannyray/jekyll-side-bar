@@ -18,7 +18,9 @@ module Jekyll
 
         # Split the HTML content by the <h2> tag
         sections = text.split(/(<h2 [^>]*>|<\/h2>)/)
-
+        if sections.length() > 0
+            new_html << sections[0]
+        end
         sections.each_with_index do |section, index|
           # Check for opening <h2> tag
           if section.start_with?('<h2 ')
@@ -80,7 +82,6 @@ module Jekyll
 
         # Output the modified HTML
         return doc.to_html
-
     end
   end
 end
