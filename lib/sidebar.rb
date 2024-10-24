@@ -11,8 +11,72 @@ module Jekyll
         end
         return extracted_id
     end
+
+
+    def split_html_with_toc(html)
+      # Regex to match the <!--toc_start--> and <!--toc_end--> comments
+      toc_pattern = /<!--toc_start-->(.*?)<!--toc_end-->/m
+
+      # Array to hold the resulting chunks
+      chunks = []
+      # Array to hold whether each chunk is within TOC or not
+      within_toc = []
+
+      # Start position for tracking the last end
+      last_end = 0
+
+      # Scan through the HTML content
+      html.scan(toc_pattern) do |match|
+        toc_content = match[0]
+        start_index = html.index(match[0], last_end) # Find the starting index
+        end_index = start_index + match[0].length # Calculate end index
+
+        # Add the content before the TOC section if any
+        if last_end < start_index
+          chunks << html[last_end...start_index]
+          within_toc << false
+        end
+
+        # Add the TOC content
+        chunks << toc_content
+        within_toc << true
+
+        # Update the last end position
+        last_end = end_index
+      end
+
+      # Add any remaining content after the last TOC section
+      if last_end < html.length
+        chunks << html[last_end...html.length]
+        within_toc << false
+      end
+
+      # Return chunks and their TOC status
+      [chunks, within_toc]
+    end
+    
+    def wrap_each_h2_in_toc_sections(html_text)
+        output_arr = split_html_with_toc(html_text)
+        chunks = output_arr[0]
+        within_toc = output_arr[1]
+        
+        html_text_output = ''
+        for array_index in 0..(chunks.length()-1) do
+            if within_toc[array_index]
+                html_text_output<<"<!--toc_start-->"
+                html_text_output<<wrap_each_h2(chunks[array_index])
+                html_text_output<<"<!--toc_end-->"
+            else
+                html_text_output<<chunks[array_index]
+            end
+        end
+        return html_text_output
+    end
       
+    # write a test for this
+    # TODO - > move this to another file
     def wrap_each_h2(text)
+                
         new_html = ''
         in_div = false
 
@@ -43,7 +107,7 @@ module Jekyll
     end
       
     def toc(text)
-        text = wrap_each_h2(text)
+        text = wrap_each_h2_in_toc_sections(text)
         doc = Nokogiri::HTML(text)
 
         # Process each TOC section

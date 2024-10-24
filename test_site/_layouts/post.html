@@ -90,13 +90,14 @@ layout: default
                 
                 let currentSection = ''
                 let current = ''
-                                
+                        
+                output_string = window.scrollY + ""
                 sections.forEach(section => {
-                    console.log(section)
                     const sectionTop = section.getBoundingClientRect().top;
                     const sectionBottom = section.getBoundingClientRect().bottom;
-                                        
-                    if (sectionTop >= 50) {
+                    
+                    output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
+                    if (sectionTop > 50 ) {
                         if(currentSection == ''){
                             currentSection = section
                         }
@@ -105,7 +106,7 @@ layout: default
                         }
                         current = currentSection.getAttribute('id');
                     }
-                    else if (sectionBottom >= 50 ){
+                    else if (sectionBottom > 50  ){
                         if(currentSection == ''){
                             currentSection = section
                         }
@@ -115,7 +116,7 @@ layout: default
                         current = currentSection.getAttribute('id');
                     }
                 });
-                
+                                
                 links.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${current}`) {
