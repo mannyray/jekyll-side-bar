@@ -128,9 +128,9 @@ module Jekyll
                     table_of_contents = <<-HTML
                     <table style="border: none;">
                     <tr>
-                    <td class="toc">
+                    <td style="padding:0px;" class="toc">
                     <div class="sticky-top">
-                    <h2>Table of Contents</h2>
+                    <h3><i class="fa fa-list-ol"></i> Contents</h3>
                     <ul id="menu">
                     #{header_links.join("\n  ")}
                     </ul>
