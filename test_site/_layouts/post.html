@@ -4,15 +4,15 @@ layout: default
 <div class="post">
     <style>
         .toc {
-          width: 25%
-          background: #f9f9f9;
-          vertical-align:top;
-          border: none;
+            width: 25%
+            background: #f9f9f9;
+            vertical-align:top;
+            border: none;
         }
         .content {
-          padding: 10px;
-          width: 75%; /* Remaining width */
-          border: none;
+            padding: 10px;
+            width: 75%; /* Remaining width */
+            border: none;
         }
         .sticky-top {
             position: -webkit-sticky;
@@ -72,65 +72,65 @@ layout: default
             100% {
                 transform: scaleX(1); /* Return to full width */
             }
-        .section {
-            border: 0;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-  </style>
+            .section {
+                border: 0;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+        </style>
     
     <script>
-            //const sections = document.querySelectorAll('.section');
-            //const links = document.querySelectorAll('#menu a');
-            window.addEventListener('scroll', () => {
-                const sections = document.querySelectorAll('.section');
-                const links = document.querySelectorAll('#menu a');
+        //const sections = document.querySelectorAll('.section');
+        //const links = document.querySelectorAll('#menu a');
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const links = document.querySelectorAll('#menu a');
+            
+            let currentSection = ''
+            let current = ''
+            
+            output_string = window.scrollY + ""
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
                 
-                let currentSection = ''
-                let current = ''
-                        
-                output_string = window.scrollY + ""
-                sections.forEach(section => {
-                    const sectionTop = section.getBoundingClientRect().top;
-                    const sectionBottom = section.getBoundingClientRect().bottom;
-                    
-                    output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
-                    if (sectionTop > 50 ) {
-                        if(currentSection == ''){
-                            currentSection = section
-                        }
-                        else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
-                            currentSection = section
-                        }
-                        current = currentSection.getAttribute('id');
+                output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
+                if (sectionTop > 50 ) {
+                    if(currentSection == ''){
+                        currentSection = section
                     }
-                    else if (sectionBottom > 50  ){
-                        if(currentSection == ''){
-                            currentSection = section
-                        }
-                        else if( sectionBottom < currentSection.getBoundingClientRect().bottom ){
-                            currentSection = section
-                        }// we need to adjust this based on if the next one is in view
-                        current = currentSection.getAttribute('id');
+                    else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
+                        currentSection = section
                     }
-                });
-                                
-                links.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
+                    current = currentSection.getAttribute('id');
+                }
+                else if (sectionBottom > 50  ){
+                    if(currentSection == ''){
+                        currentSection = section
                     }
-                });
+                    else if( sectionBottom < currentSection.getBoundingClientRect().bottom ){
+                        currentSection = section
+                    }// we need to adjust this based on if the next one is in view
+                    current = currentSection.getAttribute('id');
+                }
             });
-        </script>
+            
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
     
-  <header class="post-header">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
-  </header>
-  <article class="post-content">
-    {{ content | toc }}
-  </article>
+    <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    </header>
+    <article class="post-content">
+        {{ content | toc }}
+    </article>
 </div>
