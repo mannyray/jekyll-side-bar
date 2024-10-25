@@ -12,7 +12,7 @@ module Jekyll
             return extracted_id
         end
         
-        
+
         def split_html_with_toc(html)
             # Regex to match the <!--toc_start--> and <!--toc_end--> comments
             toc_pattern = /<!--toc_start-->(.*?)<!--toc_end-->/m
@@ -126,6 +126,7 @@ module Jekyll
                     
                     # Create the Table of Contents
                     table_of_contents = <<-HTML
+                    <div class="desktop-only">
                     <table style="border: none;">
                     <tr>
                     <td style="padding:0px;" class="toc">
@@ -141,6 +142,10 @@ module Jekyll
                     }</td>
                     </tr>
                     </table>
+                    </div>
+                    <div class="mobile-only">
+                    #{toc_section}
+                    </div>
                     HTML
                 end
                 

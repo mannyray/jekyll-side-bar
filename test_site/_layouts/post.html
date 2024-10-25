@@ -3,7 +3,8 @@ layout: default
 ---
 <div class="post">
     <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <style>
         .toc {
@@ -73,14 +74,32 @@ layout: default
             100% {
                 transform: scaleX(1); /* Return to full width */
             }
-            .section {
-                border: 0;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-                width: 100%;
+        }
+        .section {
+            border: 0;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        
+        .desktop-only {
+            display: none;
+        }
+        /* Show mobile paragraph on mobile devices */
+        .mobile-only {
+            display: block;
+        }
+        /* Media query for non-mobile devices */
+        @media (min-width: 768px) {
+            .desktop-only {
+                display: block;
             }
-        </style>
+            .mobile-only {
+                display: none;
+            }
+        }
+    </style>
     
     <script>
         //const sections = document.querySelectorAll('.section');
