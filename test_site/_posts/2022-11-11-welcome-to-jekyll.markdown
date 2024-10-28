@@ -28,6 +28,10 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
 
+
+![img]({{ site.url }}/photos/pexels-pixabay-210243.jpg)
+
+
 ## A heading
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur semper metus ut tincidunt. Pellentesque semper odio id tortor dapibus porta. Suspendisse accumsan purus massa, ultricies auctor urna blandit ac. Suspendisse arcu arcu, viverra et gravida in, venenatis sit amet diam. Nam accumsan non nisl id pharetra. Pellentesque in erat nec orci porta sodales. Nulla suscipit libero vitae iaculis facilisis. Morbi interdum, turpis quis euismod vestibulum, ligula nisl posuere ante, id tincidunt orci nibh a metus. Ut vel enim urna. Aenean blandit, nunc ac pellentesque accumsan, lectus eros maximus odio, ac porta lectus nibh sed sapien. Donec tempus gravida tempus. Curabitur malesuada in ipsum quis consectetur. Curabitur ullamcorper ligula quis tortor cursus vestibulum. Nam vehicula ut lacus nec efficitur. Vestibulum lorem lacus, semper vel pharetra et, suscipit at justo.
 
@@ -44,6 +48,9 @@ Mauris at metus sit amet risus eleifend lacinia ac eget dolor. Donec sed enim eu
 ## Another day, another heading
 
 Integer dignissim sit amet nulla eu aliquet. Praesent porttitor dolor in augue cursus, non ultricies arcu pulvinar. Vestibulum at nibh faucibus, aliquet lectus nec, iaculis metus. Vestibulum vestibulum urna id risus suscipit rhoncus. Integer ac vestibulum turpis, at tincidunt elit. Vestibulum at mattis nunc. Pellentesque venenatis pellentesque tempus. Praesent malesuada porttitor leo et tristique. Sed eu mauris vel nunc consectetur aliquam. Integer congue nisi justo, id vestibulum quam tristique non. Nulla efficitur felis erat.
+
+![img]({{ site.url }}/photos/pexels-pixabay-326235.jpg)
+
 
 ## Heading time
 
@@ -62,6 +69,17 @@ Aenean ut mauris lorem. Donec vitae pellentesque nisi. Sed iaculis sodales mauri
 Mauris at metus sit amet risus eleifend lacinia ac eget dolor. Donec sed enim euismod, gravida nulla ut, scelerisque sem. Ut dapibus augue sed elit vulputate suscipit. Ut a dui vitae lorem pretium ultrices ac a leo. Proin odio enim, tincidunt eu dictum sed, pulvinar at urna. Pellentesque vel ligula a ligula lobortis blandit quis ac arcu. Etiam cursus dapibus molestie.
 
 Integer dignissim sit amet nulla eu aliquet. Praesent porttitor dolor in augue cursus, non ultricies arcu pulvinar. Vestibulum at nibh faucibus, aliquet lectus nec, iaculis metus. Vestibulum vestibulum urna id risus suscipit rhoncus. Integer ac vestibulum turpis, at tincidunt elit. Vestibulum at mattis nunc. Pellentesque venenatis pellentesque tempus. Praesent malesuada porttitor leo et tristique. Sed eu mauris vel nunc consectetur aliquam. Integer congue nisi justo, id vestibulum quam tristique non. Nulla efficitur felis erat.
+
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hi, #{name}"
+end
+print_hi('Tom')
+#=> prints 'Hi, Tom' to STDOUT.
+{% endhighlight %}
+
+![img]({{ site.url }}/photos/pexels-pixabay-371589.jpg)
+
 
 
 <!--toc_end-->
@@ -90,6 +108,30 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacus urna, ultr
 
 Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
 
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
+Sed mollis fringilla quam vitae gravida. Proin lorem lorem, tempor in commodo sed, fringilla eget neque. Nunc ipsum justo, consequat id efficitur vitae, consectetur vel magna. Quisque ac orci ut tortor aliquet iaculis. Sed auctor quam id augue maximus, a venenatis massa eleifend. Fusce in elementum quam. Ut ac orci id sapien ultricies maximus.
+
 ## The conclusion continues
 
 Nulla eget lectus eros. Etiam eget lorem consectetur, tincidunt risus ut, auctor dui. Nullam id ex placerat, venenatis magna commodo, interdum mauris. Vivamus viverra felis vel urna tristique mattis. Sed imperdiet neque nunc, vitae vestibulum mauris sodales vitae. Curabitur et erat sapien. Duis et sodales nulla, et cursus urna.
@@ -103,3 +145,6 @@ Vivamus non vestibulum risus, non ornare quam. Sed elementum gravida lacus, et v
 Mauris sit amet ante quis enim varius molestie. Nullam quis dui porta, tempus nulla id, malesuada enim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean metus magna, hendrerit eu lorem id, interdum hendrerit nunc. In purus ante, commodo vel maximus sed, ultrices nec dui. Suspendisse potenti. Aliquam erat volutpat. Sed pellentesque nec ante quis porta. Donec rhoncus, tellus quis tempus varius, dui quam lobortis nibh, non euismod lorem erat quis sem. Duis id viverra nunc.
 
 <!--toc_end-->
+
+
+![img]({{ site.url }}/photos/pexels-roman-pohorecki-15382.jpg)
