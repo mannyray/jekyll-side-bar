@@ -35,7 +35,18 @@
         links.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');                
+                link.classList.add('active');
+                
+                console.log(link);
+                const scrollableElement = link.closest(".scrollable");
+                console.log(scrollableElement)
+                const scollableRect = scrollableElement.getBoundingClientRect();
+                const linkRect = link.getBoundingClientRect();
+                                        
+                if( ( linkRect.y + 100 ) > ( scollableRect.y + scollableRect.height ) || linkRect.y < scollableRect.y){
+                    const scrollTop = linkRect.top - scollableRect.top + scrollableElement.scrollTop - (scollableRect.height / 2) + (link.offsetHeight / 2);
+                   scrollableElement.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                }
             }
         });
     });
