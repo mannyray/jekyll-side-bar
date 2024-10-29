@@ -13,13 +13,16 @@
         padding: 10px;
         border: none;
     }
+    .scrollable{
+        height: auto;        /* Allow it to grow based on content */
+        max-height: 100vh;
+        overflow-y: auto;
+    }
     .sticky-top {
         position: -webkit-sticky;
         position: sticky;
         top: 0;
         background: #fff; /* Background for the sticky menu */
-        height: 100vh;
-        overflow-y: auto;
     }
     #menu {
         list-style-type: none; /* Remove bullets */

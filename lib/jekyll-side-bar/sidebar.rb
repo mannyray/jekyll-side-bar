@@ -35,10 +35,12 @@ module Jekyll
                     <td class="toc">
                     <div class="sticky-top">
                     <h3><i class="fa fa-list-ol"></i> Contents</h3>
+                    <div class="scrollable">
                     <ul id="menu">
                     #{header_links.join("\n  ")}
                     </ul>
-                    </span>
+                    </div>
+                    </div>
                     </td>
                     <td class="content">#{
                     toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "#{h}" }
