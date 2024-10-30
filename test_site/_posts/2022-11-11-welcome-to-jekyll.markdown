@@ -80,8 +80,6 @@ print_hi('Tom')
 
 ![img]({{ site.url }}/photos/pexels-pixabay-371589.jpg)
 
-
-
 <!--toc_end-->
 
 Some in between content that is not part of any table of contents.
