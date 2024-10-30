@@ -1,0 +1,53 @@
+<script>
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('.section');
+        const links = document.querySelectorAll('#menu a');
+        
+        let currentSection = ''
+        let current = ''
+        
+        output_string = window.scrollY + ""
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const sectionBottom = section.getBoundingClientRect().bottom;
+            
+            output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
+            if (sectionTop > 50 ) {
+                if(currentSection == ''){
+                    currentSection = section
+                }
+                else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
+                    currentSection = section
+                }
+                current = currentSection.getAttribute('id');
+            }
+            else if (sectionBottom > 50  ){
+                if(currentSection == ''){
+                    currentSection = section
+                }
+                else if( sectionBottom < currentSection.getBoundingClientRect().bottom ){
+                    currentSection = section
+                }
+                current = currentSection.getAttribute('id');
+            }
+        });
+        
+        links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+                
+                console.log(link);
+                const scrollableElement = link.closest(".scrollable");
+                console.log(scrollableElement)
+                const scollableRect = scrollableElement.getBoundingClientRect();
+                const linkRect = link.getBoundingClientRect();
+                                        
+                if( ( linkRect.y + 100 ) > ( scollableRect.y + scollableRect.height ) || linkRect.y < scollableRect.y){
+                    const scrollTop = linkRect.top - scollableRect.top + scrollableElement.scrollTop - (scollableRect.height / 2) + (link.offsetHeight / 2);
+                   scrollableElement.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+</script>
