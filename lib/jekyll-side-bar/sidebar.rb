@@ -14,9 +14,10 @@ module Jekyll
                 doc = Nokogiri::HTML(text)
                 
                 # Process each TOC section
+                counter = 0
                 doc.inner_html = doc.inner_html.gsub(/(<!--toc_start-->)(.*?)(<!--toc_end-->)/m) do |match|
                     toc_section = $2
-                    
+                    counter = counter + 1
                     # Parse the TOC section to find <h2> headers
                     toc_doc = Nokogiri::HTML(toc_section)
                     h2_headers = toc_doc.css('h2')
@@ -49,7 +50,10 @@ module Jekyll
                     </table>
                     </div>
                     <div class="mobile-only">
+                    <div class="target-section" id="target-section-#{counter}">
                     #{toc_section}
+                    </div>
+                    <button class="popup-button" id="popup-button-#{counter}"><i class="fa fa-list-ol"></i></button>
                     </div>
                     HTML
                 end
