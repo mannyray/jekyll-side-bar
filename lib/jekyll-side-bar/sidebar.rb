@@ -17,6 +17,7 @@ module Jekyll
                 counter = 0
                 doc.inner_html = doc.inner_html.gsub(/(<!--toc_start-->)(.*?)(<!--toc_end-->)/m) do |match|
                     toc_section = $2
+                    mobile_header_links_removed_toc_section = remove_mobile_sections(toc_section)
                     counter = counter + 1
                     # Parse the TOC section to find <h2> headers
                     toc_doc = Nokogiri::HTML(toc_section)
@@ -26,6 +27,11 @@ module Jekyll
                     header_links = h2_headers.map do |header|
                         id = header['id']
                         "<li><a href=\"#section-#{id}\">#{header.text}</a></li>"
+                    end
+                    
+                    mobile_header_links = h2_headers.map do |header|
+                        id = header['id']
+                        "<li><a href=\"#mobile-section-#{id}\">#{header.text}</a></li>"
                     end
                     
                     # Create the Table of Contents
@@ -43,15 +49,24 @@ module Jekyll
                     </div>
                     </div>
                     </td>
-                    <td class="content">#{
-                    toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "#{h}" }
-                    }</td>
+                    <td class="content">
+                    #{mobile_header_links_removed_toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "#{h}" }}
+                    </td>
                     </tr>
                     </table>
                     </div>
                     <div class="mobile-only">
                     <div class="target-section" id="target-section-#{counter}">
-                    #{toc_section}
+                    #{toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "#{h}" }}
+                    </div>
+                    <div id="sidebar-#{counter}" class=".sidebar">
+                    <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                    <span><i class="fa fa-list-ol"></i> Contents</span>
+                    <span class="close-button" style="font-size: 24px;">&times;</span>
+                    </h3>
+                    <ul id="menu">
+                    #{mobile_header_links.join("\n  ")}
+                    </ul>
                     </div>
                     <button class="popup-button" id="popup-button-#{counter}"><i class="fa fa-list-ol"></i></button>
                     </div>

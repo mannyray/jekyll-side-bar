@@ -121,4 +121,35 @@
         opacity: 1; /* Fully visible */
         visibility: visible; /* Make it visible */
     }
+    .target-section {
+        background-color: #f0f0f0;
+    }
+    .sidebar {
+        position: fixed;
+        right: 0; /* Align sidebar directly to the right edge */
+        width: 200px; /* Set the width of the sidebar */
+        max-height: 80vh; /* Limit height for scrolling */
+        overflow-y: auto; /* Enable vertical scrolling */
+        background: #fff; /* Background for the sidebar */
+        padding: 10px; /* Padding inside the sidebar */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        z-index: 1000; /* Ensure it appears above other elements */
+        transform: translate(0, -50%) scale(0); /* Start hidden and minimized */
+        transform-origin: right center; /* Scale from the right */
+        transition: transform 0.3s ease, visibility 0.5s ease; /* Smooth transition */
+        visibility: hidden; /* Initially hidden */
+        border: 1px solid #ccc; /* Add a border */
+        border-radius: 8px; /* Slightly rounded corners */
+    }
+    .sidebar.show {
+        transform: translate(0, -50%) scale(1); /* Show the sidebar */
+        visibility: visible; /* Make it visible */
+    }
+    .sidebar h3 {
+        margin: 0; /* Remove default margin */
+        padding: 0; /* Remove default padding */
+        height: 40px; /* Set height for better alignment */
+    }
+    
+    
 </style>
