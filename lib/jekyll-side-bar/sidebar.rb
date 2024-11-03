@@ -10,7 +10,7 @@ module Jekyll
                 header_html_content_text = File.read( File.join(plugin_dir,"header.html" ))
                 script_html_content_text = File.read( File.join(plugin_dir,"script.html" ))
                 
-                text = wrap_each_h2_in_toc_sections(header_html_content_text + styling_html_content_text + script_html_content_text + text)
+                text = wrap_each_h2_in_toc_sections(header_html_content_text + styling_html_content_text + text + script_html_content_text)
                 doc = Nokogiri::HTML(text)
                 
                 # Process each TOC section
@@ -59,10 +59,10 @@ module Jekyll
                     <div class="target-section" id="target-section-#{counter}">
                     #{toc_section.gsub(/(<h2[^>]*>)/, '<hr>\1').gsub(/(<h2[^>]*>.*?<\/h2>)/m) { |h| "#{h}" }}
                     </div>
-                    <div id="sidebar-#{counter}" class=".sidebar">
+                    <div id="sidebar-#{counter}" class="sidebar">
                     <h3 style="display: flex; align-items: center; justify-content: space-between;">
                     <span><i class="fa fa-list-ol"></i> Contents</span>
-                    <span class="close-button" style="font-size: 24px;">&times;</span>
+                    <span class="close-button" id="close-buttons-#{counter}" style="font-size: 24px;">&times;</span>
                     </h3>
                     <ul id="menu">
                     #{mobile_header_links.join("\n  ")}

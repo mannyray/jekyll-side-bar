@@ -4,13 +4,27 @@
     }
 
     if (isMobileOnlyView()) {
-        window.addEventListener('scroll', function() {
+        
+        let popupButtons = [];
+        let targetSections = [];
+        let sidebars = [];
+        let closebuttons = [];
+        let i = 1;
+        let popupButton;
+        while ((popupButton = document.getElementById(`popup-button-${i}`)) !== null) {
+            popupButtons.push(popupButton);
+            targetSections.push(document.getElementById(`target-section-${i}`));
+            sidebars.push(document.getElementById(`sidebar-${i}`));
+            closebuttons.push(document.getElementById(`close-buttons-${i}`));
             
-            let i = 1;
-            let popupButton;
-
-            while ((popupButton = document.getElementById(`popup-button-${i}`)) !== null) {
-                const targetSection = document.getElementById(`target-section-${i}`);
+            i++;
+        }
+        let popupButtonCount = i - 1;
+        
+        window.addEventListener('scroll', function() {
+            for (let i = 1; i <= popupButtonCount; i++) {
+                const popupButton = popupButtons[i-1];
+                const targetSection = targetSections[i-1]
                 const sectionPosition = targetSection.getBoundingClientRect();
                 const viewportHeight = window.innerHeight;
                 
@@ -20,11 +34,45 @@
                 } else {
                     popupButton.classList.remove('show'); // Hide the button
                 }
-                // Do something with popupButton
-                console.log(`Found: ${popupButton.id}`);
-                i++;
+                
+                const sidebar = sidebars[i-1];
+                // Hide sidebar on scroll (only on mobile)
+                if (sidebar.classList.contains('show') && window.innerWidth <= 768) {
+                    sidebar.classList.remove('show'); // Hide the sidebar
+                }
             }
         });
+        
+        for (let i = 1; i <= popupButtonCount; i++) {
+            // Function to toggle sidebar visibility
+            let popupButton = popupButtons[i-1];
+            popupButton.addEventListener('click', function() {
+                const sidebar = sidebars[i-1];
+                sidebar.classList.toggle('show'); // Toggle sidebar visibility
+                if (sidebar.classList.contains('show')) {
+                    // Calculate the sidebar height and set its position
+                    const sidebarHeight = sidebar.scrollHeight; // Use scrollHeight for accurate height
+                    const windowHeight = window.innerHeight; // Get the window height
+                    const topPosition = (windowHeight / 2); // - (sidebarHeight / 2); // Calculate top position
+                    sidebar.style.top = `${topPosition}px`; // Set the top position
+                    console.log(sidebar.style.top)
+                }
+                
+                // Close sidebar when close button is clicked
+                closebuttons[i-1].addEventListener('click', function() {
+                    sidebar.classList.remove('show'); // Hide the sidebar
+                });
+                
+                
+                // Close sidebar when clicking outside of it
+                document.addEventListener('click', function(event) {
+                    if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !popupButton.contains(event.target)) {
+                        sidebar.classList.remove('show'); // Hide the sidebar
+                    }
+                });
+                
+            });
+        }
     } else {
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.section');
