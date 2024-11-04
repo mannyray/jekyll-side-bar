@@ -64,9 +64,11 @@ module Jekyll
                     <span><i class="fa fa-list-ol"></i> Contents</span>
                     <span class="close-button" id="close-buttons-#{counter}" style="font-size: 24px;">&times;</span>
                     </h3>
+                    <div class="mobile-scrollable">
                     <ul id="menu">
                     #{mobile_header_links.join("\n  ")}
                     </ul>
+                    </div>
                     </div>
                     <button class="popup-button" id="popup-button-#{counter}"><i class="fa fa-list-ol"></i></button>
                     </div>
