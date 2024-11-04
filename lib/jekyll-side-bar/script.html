@@ -9,16 +9,27 @@
         let targetSections = [];
         let sidebars = [];
         let closebuttons = [];
+        let sections_in_target_section = [];
+        let links_in_sidebar = [];
         let i = 1;
         let popupButton;
         while ((popupButton = document.getElementById(`popup-button-${i}`)) !== null) {
             popupButtons.push(popupButton);
-            targetSections.push(document.getElementById(`target-section-${i}`));
-            sidebars.push(document.getElementById(`sidebar-${i}`));
+            const targetSection = document.getElementById(`target-section-${i}`)
+            targetSections.push(targetSection);
+            const sidebar = document.getElementById(`sidebar-${i}`);
+            sidebars.push(sidebar);
             closebuttons.push(document.getElementById(`close-buttons-${i}`));
-            
+
+            const mobileSections = targetSection.querySelectorAll('[id^="mobile-section"]');
+            // Convert NodeList to an array and push it to sections_in_target_section
+            sections_in_target_section.push(Array.from(mobileSections));
+
+            const links = sidebar.querySelectorAll('a');
+            links_in_sidebar.push(Array.from(links));
             i++;
         }
+        
         let popupButtonCount = i - 1;
         
         window.addEventListener('scroll', function() {
@@ -40,6 +51,26 @@
                 if (sidebar.classList.contains('show') && window.innerWidth <= 768) {
                     sidebar.classList.remove('show'); // Hide the sidebar
                 }
+                
+                
+                // Highlight active link based on scroll position
+                let currentSectionId = '';
+                sections_in_target_section[i-1].forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const sectionBottom = section.getBoundingClientRect().bottom;
+
+                    // Check if the section is in view and at the top of the viewport
+                    if (sectionTop <= viewportHeight / 2 && sectionBottom > viewportHeight / 2) {
+                        currentSectionId = section.id;
+                    }
+                });
+                
+                 links_in_sidebar[i-1].forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active'); // Highlight active link
+                    }
+                });
             }
         });
         
@@ -55,7 +86,6 @@
                     const windowHeight = window.innerHeight; // Get the window height
                     const topPosition = (windowHeight / 2); // - (sidebarHeight / 2); // Calculate top position
                     sidebar.style.top = `${topPosition}px`; // Set the top position
-                    console.log(sidebar.style.top)
                 }
                 
                 // Close sidebar when close button is clicked
