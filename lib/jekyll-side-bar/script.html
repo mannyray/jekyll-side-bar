@@ -52,7 +52,6 @@
                     sidebar.classList.remove('show'); // Hide the sidebar
                 }
                 
-                
                 // Highlight active link based on scroll position
                 let currentSectionId = '';
                 sections_in_target_section[i-1].forEach(section => {
@@ -116,7 +115,6 @@
                     sidebar.classList.remove('show'); // Hide the sidebar
                 });
                 
-                
                 // Close sidebar when clicking outside of it
                 document.addEventListener('click', function(event) {
                     if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !popupButton.contains(event.target)) {
@@ -127,6 +125,7 @@
             });
         }
     } else {
+        // for desktop
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('.section');
             const links = document.querySelectorAll('#menu a');
@@ -134,6 +133,7 @@
             let currentSection = ''
             let current = ''
             
+            // highlight the active link based on where the location of scroll
             output_string = window.scrollY + ""
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
@@ -164,7 +164,8 @@
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
-                    
+                    // For cases when scrollable toc is bigger than screen view
+                    // and active link is outside of view
                     const scrollableElement = link.closest(".scrollable");
                     const scollableRect = scrollableElement.getBoundingClientRect();
                     const linkRect = link.getBoundingClientRect();

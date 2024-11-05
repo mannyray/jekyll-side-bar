@@ -35,6 +35,7 @@ module Jekyll
                     end
                     
                     # Create the Table of Contents
+                    # we split based on mobile and desktop
                     table_of_contents = <<-HTML
                     <div class="desktop-only">
                     <table class = "toc_and_content_table">
