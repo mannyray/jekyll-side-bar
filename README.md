@@ -110,16 +110,6 @@ print_hi('Tom')
 
 To get a live demonstration then go to the `test_site` directory and run `jekyll serve` in the terminal. Otherwise, check out the gifs below:
 
-<style>
-table th:first-of-type {
-    width: 35%;
-}
-table th:nth-of-type(2) {
-    width: 65%;
-    max-height:100px;
-}
-</style>
-
 
 | Features    | Demonstration |
 | -------- | ------- |
