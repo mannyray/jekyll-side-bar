@@ -19,7 +19,7 @@ Finally, the elements selected by the author to be as headers in the sidebar all
 
 ### 1. Import the plugin
 
-Copy the plugin folder `jekyll-side-bar` from this repositories `lib` into your Jekyll based site's `_plugins` folder. 
+Copy the plugin folder `jekyll-side-bar` from this repositories [`lib`](https://github.com/mannyray/jekyll-side-bar/tree/master/lib) into your Jekyll based site's `_plugins` folder. 
 
 ### 2. Modify your post layout
 
@@ -34,7 +34,7 @@ categories: jekyll update
 ---
 ```
 
-Due to the layout being `post`, make sure your modify your `post.html` in your [layout directory](https://jekyllrb.com/docs/step-by-step/04-layouts/) to filter the `content` via `| toc` operation since this plugin is a filter. Here is a `before` / `after` for a sample layout page (yours may be different).
+Due to the layout being `post`, make sure your modify your `post.html` in your [layout directory](https://jekyllrb.com/docs/step-by-step/04-layouts/) to filter the `content` via `| toc` operation since this plugin is a [filter](https://jekyllrb.com/docs/plugins/filters/). Here is a `before` / `after` for a sample layout page (yours may be different).
 
 
 
@@ -68,7 +68,7 @@ layout: default
     <article class="post-content">
         {{ content | toc }}
     </article>
-</div>}
+</div>
 ```
 </td>
 </tr>
@@ -108,11 +108,16 @@ print_hi('Tom')
 
 ## Features and demonstrations
 
-To get a live demonstration then go to the `test_site` directory and run `jekyll serve` in the terminal. 
+To get a live demonstration then go to the `test_site` directory and run `jekyll serve` in the terminal. Otherwise, check out the gifs below:
+
 
 | Features    | Demonstration |
 | -------- | ------- |
-| A sidebar can be added in between regular content. The sidebar minizes the content width, but adds a compass for navigation. You can have multiple sidebars. The content can contain code/image/text.  |  ![](assets/intro.gif)  |
+ | A sidebar can be added in between regular content. The sidebar minizes the content width, but adds a compass for navigation. You can have multiple sidebars throughout your blog post. The sidebar content can contain code/image/text.  |  ![](assets/intro.gif)  | 
 | You can use the sidebar to jump around. The highlighted/active link in the sidebar shows where you are currently located at.  | ![](assets/jump_around.gif) |
 | You can also have long sidebars. The sidebar gets its own scrollbar which auto adjusts when the page's scrollbar is scrolled to an `h2` heading that is not visible in the sidebar  | ![](assets/long_sidebar.gif) |
+| In mobile view, there is a button on the side of the screen. When pressed it shows you the sidebar with your current section highlighted. The text that is organized with the sidebar has a grey background to differentiate to non sidebar content. | <div style="height:50%">![](assets/mobile_1.gif)</div>  |
+| In mobile view, the sidebar dissapears upon scrolling or pressing something outside the sidebar (or if pressing the sidebar's "x" button.) It can be used for navigating to links you are interested in. | ![](assets/mobile_2.gif) |
+| In mobile view, long sidebars auto adjust when your current scroll position on the page is viewing a header outside    | ![](assets/mobile_3.gif) | 
+
 

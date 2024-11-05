@@ -1,53 +1,181 @@
 <script>
-    window.addEventListener('scroll', () => {
-        const sections = document.querySelectorAll('.section');
-        const links = document.querySelectorAll('#menu a');
+    function isMobileOnlyView() {
+        return window.matchMedia("(max-width: 767px)").matches;
+    }
+
+    if (isMobileOnlyView()) {
         
-        let currentSection = ''
-        let current = ''
+        let popupButtons = [];
+        let targetSections = [];
+        let sidebars = [];
+        let closebuttons = [];
+        let sections_in_target_section = [];
+        let links_in_sidebar = [];
+        let i = 1;
+        let popupButton;
+        while ((popupButton = document.getElementById(`popup-button-${i}`)) !== null) {
+            popupButtons.push(popupButton);
+            const targetSection = document.getElementById(`target-section-${i}`)
+            targetSections.push(targetSection);
+            const sidebar = document.getElementById(`sidebar-${i}`);
+            sidebars.push(sidebar);
+            closebuttons.push(document.getElementById(`close-buttons-${i}`));
+
+            const mobileSections = targetSection.querySelectorAll('[id^="mobile-section"]');
+            // Convert NodeList to an array and push it to sections_in_target_section
+            sections_in_target_section.push(Array.from(mobileSections));
+
+            const links = sidebar.querySelectorAll('a');
+            links_in_sidebar.push(Array.from(links));
+            i++;
+        }
         
-        output_string = window.scrollY + ""
-        sections.forEach(section => {
-            const sectionTop = section.getBoundingClientRect().top;
-            const sectionBottom = section.getBoundingClientRect().bottom;
-            
-            output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
-            if (sectionTop > 50 ) {
-                if(currentSection == ''){
-                    currentSection = section
-                }
-                else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
-                    currentSection = section
-                }
-                current = currentSection.getAttribute('id');
-            }
-            else if (sectionBottom > 50  ){
-                if(currentSection == ''){
-                    currentSection = section
-                }
-                else if( sectionBottom < currentSection.getBoundingClientRect().bottom ){
-                    currentSection = section
-                }
-                current = currentSection.getAttribute('id');
-            }
-        });
+        let popupButtonCount = i - 1;
         
-        links.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+        window.addEventListener('scroll', function() {
+            for (let i = 1; i <= popupButtonCount; i++) {
+                const popupButton = popupButtons[i-1];
+                const targetSection = targetSections[i-1]
+                const sectionPosition = targetSection.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
                 
-                console.log(link);
-                const scrollableElement = link.closest(".scrollable");
-                console.log(scrollableElement)
-                const scollableRect = scrollableElement.getBoundingClientRect();
-                const linkRect = link.getBoundingClientRect();
-                                        
-                if( ( linkRect.y + 100 ) > ( scollableRect.y + scollableRect.height ) || linkRect.y < scollableRect.y){
-                    const scrollTop = linkRect.top - scollableRect.top + scrollableElement.scrollTop - (scollableRect.height / 2) + (link.offsetHeight / 2);
-                   scrollableElement.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                // Check if the target section is halfway through the viewport
+                if (sectionPosition.top < viewportHeight / 2 && sectionPosition.bottom > viewportHeight / 2) {
+                    popupButton.classList.add('show'); // Show the button
+                } else {
+                    popupButton.classList.remove('show'); // Hide the button
                 }
+                
+                const sidebar = sidebars[i-1];
+                // Hide sidebar on scroll (only on mobile)
+                if (sidebar.classList.contains('show') && window.innerWidth <= 768) {
+                    sidebar.classList.remove('show'); // Hide the sidebar
+                }
+                
+                // Highlight active link based on scroll position
+                let currentSectionId = '';
+                sections_in_target_section[i-1].forEach(section => {
+                    const sectionTop = section.getBoundingClientRect().top;
+                    const sectionBottom = section.getBoundingClientRect().bottom;
+
+                    // Check if the section is in view and at the top of the viewport
+                    if (sectionTop <= viewportHeight / 2 && sectionBottom > viewportHeight / 2) {
+                        currentSectionId = section.id;
+                    }
+                });
+                
+                 links_in_sidebar[i-1].forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentSectionId}`) {
+                        link.classList.add('active'); // Highlight active link
+                    }
+                });
             }
         });
-    });
+        
+        for (let i = 1; i <= popupButtonCount; i++) {
+            // Function to toggle sidebar visibility
+            let popupButton = popupButtons[i-1];
+            popupButton.addEventListener('click', function() {
+                const sidebar = sidebars[i-1];
+                sidebar.classList.toggle('show'); // Toggle sidebar visibility
+                if (sidebar.classList.contains('show')) {
+                    // Calculate the sidebar height and set its position
+                    const sidebarHeight = sidebar.scrollHeight; // Use scrollHeight for accurate height
+                    const windowHeight = window.innerHeight; // Get the window height
+                    const topPosition = (windowHeight / 2); // - (sidebarHeight / 2); // Calculate top position
+                    sidebar.style.top = `${topPosition}px`; // Set the top position
+                    
+                    links_in_sidebar[i-1].forEach(link => {
+                       if (link.classList.contains('active')) {
+
+                           function delay(time) {
+                             return new Promise(resolve => setTimeout(resolve, time));
+                           }
+                           function scroll_adjust(){
+                               // add the delay so that the sidebar can be loaded from zero size
+                               // before getting all the various coordinates used in calculation
+                               const scrollableElement = link.closest(".mobile-scrollable");
+                               const scollableRect = scrollableElement.getBoundingClientRect();
+                               const linkRect = link.getBoundingClientRect();
+                               
+                               if( ( linkRect.y + 100 ) > ( scollableRect.y + scollableRect.height ) || linkRect.y < scollableRect.y){
+                                   const scrollTop = linkRect.top - scollableRect.top + scrollableElement.scrollTop - (scollableRect.height / 2) + (link.offsetHeight / 2);
+                                   scrollableElement.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                               }
+                           }
+                           
+                           delay(1000).then(() =>scroll_adjust() );
+                       }
+                    })
+                }
+                
+                // Close sidebar when close button is clicked
+                closebuttons[i-1].addEventListener('click', function() {
+                    sidebar.classList.remove('show'); // Hide the sidebar
+                });
+                
+                // Close sidebar when clicking outside of it
+                document.addEventListener('click', function(event) {
+                    if (sidebar.classList.contains('show') && !sidebar.contains(event.target) && !popupButton.contains(event.target)) {
+                        sidebar.classList.remove('show'); // Hide the sidebar
+                    }
+                });
+                
+            });
+        }
+    } else {
+        // for desktop
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const links = document.querySelectorAll('#menu a');
+            
+            let currentSection = ''
+            let current = ''
+            
+            // highlight the active link based on where the location of scroll
+            output_string = window.scrollY + ""
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                
+                output_string = output_string + "(" +sectionTop + ", " + sectionBottom + ")"
+                if (sectionTop > 50 ) {
+                    if(currentSection == ''){
+                        currentSection = section
+                    }
+                    else if(currentSection.getBoundingClientRect().top > 0 && sectionTop < currentSection.getBoundingClientRect().top ){
+                        currentSection = section
+                    }
+                    current = currentSection.getAttribute('id');
+                }
+                else if (sectionBottom > 50  ){
+                    if(currentSection == ''){
+                        currentSection = section
+                    }
+                    else if( sectionBottom < currentSection.getBoundingClientRect().bottom ){
+                        currentSection = section
+                    }
+                    current = currentSection.getAttribute('id');
+                }
+            });
+            
+            links.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                    // For cases when scrollable toc is bigger than screen view
+                    // and active link is outside of view
+                    const scrollableElement = link.closest(".scrollable");
+                    const scollableRect = scrollableElement.getBoundingClientRect();
+                    const linkRect = link.getBoundingClientRect();
+                    
+                    if( ( linkRect.y + 100 ) > ( scollableRect.y + scollableRect.height ) || linkRect.y < scollableRect.y){
+                        const scrollTop = linkRect.top - scollableRect.top + scrollableElement.scrollTop - (scollableRect.height / 2) + (link.offsetHeight / 2);
+                        scrollableElement.scrollTo({ top: scrollTop, behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    }
 </script>

@@ -83,8 +83,10 @@ def wrap_each_h2(text)
             h2_id = extract_id(section)
             # If we were already in a div, close it
             new_html << '</div>' if in_div
+            new_html << '</div>' if in_div
             # Start a new div
             new_html << '<div id="section-'+h2_id+'" class="section">'
+            new_html << '<div id="mobile-section-'+h2_id+'" class="section">'
             # Add the <h2> tag
             new_html << section
             in_div = true
@@ -94,6 +96,7 @@ def wrap_each_h2(text)
         end
     end
     # Close the last div if it was opened
+    new_html << '</div>' if in_div
     new_html << '</div>' if in_div
     return new_html
 end
@@ -117,3 +120,12 @@ def wrap_each_h2_in_toc_sections(html_text)
     end
         return html_text_output
     end
+
+def remove_mobile_sections(text)
+    # Regular expression to match the <div> tags with the specified format
+    regex = /<div id="mobile-section[0-9a-zA-Z-]*" class="section">/m
+    # Use gsub to replace matched patterns with a simple <div>
+    modified_text = text.gsub(regex, '<div>')
+    
+    modified_text
+end
