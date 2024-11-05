@@ -127,7 +127,7 @@ table th:nth-of-type(2) {
 | You can use the sidebar to jump around. The highlighted/active link in the sidebar shows where you are currently located at.  | ![](assets/jump_around.gif) |
 | You can also have long sidebars. The sidebar gets its own scrollbar which auto adjusts when the page's scrollbar is scrolled to an `h2` heading that is not visible in the sidebar  | ![](assets/long_sidebar.gif) |
 | In mobile view, there is a button on the side of the screen. When pressed it shows you the sidebar with your current section highlighted. The text that is organized with the sidebar has a grey background to differentiate to non sidebar content. | <div style="height:50%">![](assets/mobile_1.gif)</div>  |
-| In mobile view, the sidebar dissapears upon scrolling or pressing something outside the sidebar (or if pressing the sidebar's "x" button.) It can be used for navigating to links you are interested in. | ![](assets/mobile_2_output.gif) |
+| In mobile view, the sidebar dissapears upon scrolling or pressing something outside the sidebar (or if pressing the sidebar's "x" button.) It can be used for navigating to links you are interested in. | ![](assets/mobile_2.gif) |
 | In mobile view, long sidebars auto adjust when your current scroll position on the page is viewing a header outside    | ![](assets/mobile_3.gif) | 
 
 
