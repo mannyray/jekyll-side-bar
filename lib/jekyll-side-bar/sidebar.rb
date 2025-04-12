@@ -23,15 +23,18 @@ module Jekyll
                     toc_doc = Nokogiri::HTML(toc_section)
                     h2_headers = toc_doc.css('h2')
                     
+                    # prevents from modifying the url in the browser when clicking the url
+                    url_modify_prevent = "onclick=\"event.preventDefault(); document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });\""
+                    
                     # Create an array of links to the headers
                     header_links = h2_headers.map do |header|
                         id = header['id']
-                        "<li><a href=\"#section-#{id}\">#{header.text}</a></li>"
+                        "<li><a href=\"#section-#{id}\" #{url_modify_prevent}>#{header.text}</a></li>"
                     end
                     
                     mobile_header_links = h2_headers.map do |header|
                         id = header['id']
-                        "<li><a href=\"#mobile-section-#{id}\">#{header.text}</a></li>"
+                        "<li><a href=\"#mobile-section-#{id}\" #{url_modify_prevent}>#{header.text}</a></li>"
                     end
                     
                     # Create the Table of Contents

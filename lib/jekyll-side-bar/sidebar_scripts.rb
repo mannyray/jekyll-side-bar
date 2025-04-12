@@ -22,6 +22,9 @@ end
 #        text<<chunks[array_index]
 #end
 def split_html_with_toc(html)
+    # duct tape quick bug fix where if the first part of page was a toc then it wasn't rendering
+    html = '<p style="height:0px;width:0px"></p>'+html
+
     # Regex to match the <!--toc_start--> and <!--toc_end--> comments
     toc_pattern = /<!--toc_start-->(.*?)<!--toc_end-->/m
     
@@ -68,7 +71,7 @@ end
 # it in a div including the content following it
 # up until the next h2. Give the wrapping div
 # an id and class of section.
-def wrap_each_h2(text)
+def wrap_each_h2(text,identifier) # identifier if there are multiple same titles on the page
     new_html = ''
     in_div = false
     
@@ -85,8 +88,8 @@ def wrap_each_h2(text)
             new_html << '</div>' if in_div
             new_html << '</div>' if in_div
             # Start a new div
-            new_html << '<div id="section-'+h2_id+'" class="section">'
-            new_html << '<div id="mobile-section-'+h2_id+'" class="section">'
+            new_html << '<div id="section-'+h2_id+'-'+identifier+'" class="section">'
+            new_html << '<div id="mobile-section-'+h2_id+'-'+identifier+'" class="section">'
             # Add the <h2> tag
             new_html << section
             in_div = true
@@ -98,6 +101,12 @@ def wrap_each_h2(text)
     # Close the last div if it was opened
     new_html << '</div>' if in_div
     new_html << '</div>' if in_div
+    
+    
+    new_html = new_html.gsub(/<h2 id="([^"]+)">/) do |match|
+      "<h2 id=\"#{$1}-#{identifier}\">"
+    end
+    
     return new_html
 end
 
@@ -112,7 +121,7 @@ def wrap_each_h2_in_toc_sections(html_text)
     for array_index in 0..(chunks.length()-1) do
         if within_toc[array_index]
             html_text_output<<"<!--toc_start-->"
-            html_text_output<<wrap_each_h2(chunks[array_index])
+            html_text_output<<wrap_each_h2(chunks[array_index],array_index.to_s)
             html_text_output<<"<!--toc_end-->"
         else
             html_text_output<<chunks[array_index]
