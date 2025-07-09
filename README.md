@@ -1,5 +1,8 @@
 # jekyll-side-bar
 
+> [!NOTE]
+> To see a live demonstration of the side-bar, please go to [http://webjourney.ca/jekyll-side-bar/jekyll/update/2022/11/11/welcome-to-jekyll.html](http://webjourney.ca/jekyll-side-bar/jekyll/update/2022/11/11/welcome-to-jekyll.html)
+
 ## Introduction
 
 This repository hosts code for a plugin for [Jekyll based sites](https://jekyllrb.com/) that adds a sidebar to your regular blog post. The plugin is simple to use. This plugin allows for multiple sidebars within a single blog post page. This has been tested with Jekyll's minima theme.
