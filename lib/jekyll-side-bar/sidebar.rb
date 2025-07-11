@@ -42,7 +42,7 @@ module Jekyll
                     <tr>
                     <td class="toc">
                     <div class="sticky-top">
-                    <h3><i class="fa fa-list-ol"></i> Contents</h3>
+                    <h3><span class="icon-list-ol" style="position: relative; top: 2px;"></span></i> Contents</h3>
                     <div class="scrollable">
                     <ul id="menu">
                     #{header_links.join("\n  ")}
@@ -62,7 +62,7 @@ module Jekyll
                     </div>
                     <div id="sidebar-#{counter}" class="sidebar">
                     <h3 style="display: flex; align-items: center; justify-content: space-between;">
-                    <span><i class="fa fa-list-ol"></i> Contents</span>
+                    <span><span class="icon-list-ol" style="position: relative; top: 2px;"></span></i> Contents</span>
                     <span class="close-button" id="close-buttons-#{counter}" style="font-size: 24px;">&times;</span>
                     </h3>
                     <div class="mobile-scrollable">
@@ -71,7 +71,7 @@ module Jekyll
                     </ul>
                     </div>
                     </div>
-                    <button class="popup-button" id="popup-button-#{counter}"><i class="fa fa-list-ol"></i></button>
+                    <button class="popup-button" id="popup-button-#{counter}"><span class="icon-list-ol"></span></button>
                     </div>
                     HTML
                 end
