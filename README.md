@@ -24,7 +24,19 @@ Finally, the elements selected by the author to be as headers in the sidebar all
 
 Copy the plugin folder `jekyll-side-bar` from this repositories [`lib`](https://github.com/mannyray/jekyll-side-bar/tree/master/lib) into your Jekyll based site's `_plugins` folder. 
 
-### 2. Modify your post layout
+### 2. Import a custom font
+
+This font is the "table of contents" emoji used as part of the sidebar's display. Originally, the font is from
+
+```
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
+```
+
+but it was decided to (a) make this repository's code self contained by preventiong importing from another website and (b) use a font with just one symbol instead of all of the symbols provided by font awesome to reduce the data to be downloaded to viewer's page.
+
+Copy from the root of this repository the `content_font` folder in to the `css` folder located in the root directory of your Jekyll site. 
+
+### 3. Modify your post layout
 
 Your markdown blog posts will have have a header section like the following
 
@@ -78,7 +90,7 @@ layout: default
 </table>
 
 
-### 3. Modify your content
+### 4. Modify your content
 
 Wrap your content that you want to be part of the sidebar with `<!--toc_start-->` and `<!--toc_end-->`. All lines that are wrapped that are `h2` headings (e.g. `## Another day, another heading`) will be made into a link in the sidebar. `<!--toc_start-->` must be followed by a `h2` heading line. The following section below will be modified into the following image. 
 

@@ -29,7 +29,7 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-talk]: https://talk.jekyllrb.com/
 
 
-![img]({{ site.url }}/photos/pexels-pixabay-210243.jpg)
+![img]({{ site.baseurl }}/photos/pexels-pixabay-210243.jpg)
 
 
 ## A heading
@@ -49,7 +49,7 @@ Mauris at metus sit amet risus eleifend lacinia ac eget dolor. Donec sed enim eu
 
 Integer dignissim sit amet nulla eu aliquet. Praesent porttitor dolor in augue cursus, non ultricies arcu pulvinar. Vestibulum at nibh faucibus, aliquet lectus nec, iaculis metus. Vestibulum vestibulum urna id risus suscipit rhoncus. Integer ac vestibulum turpis, at tincidunt elit. Vestibulum at mattis nunc. Pellentesque venenatis pellentesque tempus. Praesent malesuada porttitor leo et tristique. Sed eu mauris vel nunc consectetur aliquam. Integer congue nisi justo, id vestibulum quam tristique non. Nulla efficitur felis erat.
 
-![img]({{ site.url }}/photos/pexels-pixabay-326235.jpg)
+![img]({{ site.baseurl }}/photos/pexels-pixabay-326235.jpg)
 
 
 ## Heading time
@@ -78,7 +78,7 @@ print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 {% endhighlight %}
 
-![img]({{ site.url }}/photos/pexels-pixabay-371589.jpg)
+![img]({{ site.baseurl }}/photos/pexels-pixabay-371589.jpg)
 
 <!--toc_end-->
 
@@ -145,7 +145,7 @@ Mauris sit amet ante quis enim varius molestie. Nullam quis dui porta, tempus nu
 <!--toc_end-->
 
 
-![img]({{ site.url }}/photos/pexels-roman-pohorecki-15382.jpg)
+![img]({{ site.baseurl }}/photos/pexels-roman-pohorecki-15382.jpg)
 
 
 <!--toc_start-->
@@ -260,4 +260,4 @@ Mauris sit amet ante quis enim varius molestie. Nullam quis dui porta, tempus nu
 
 <!--toc_end-->
 
-![img]({{ site.url }}/photos/pexels-chris-czermak-2444429.jpg)
+![img]({{ site.baseurl }}/photos/pexels-chris-czermak-2444429.jpg)
