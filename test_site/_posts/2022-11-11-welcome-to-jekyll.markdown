@@ -5,8 +5,18 @@ date:   2022-11-11 16:27:06 -0600
 categories: jekyll update
 ---
 
-SCROLL DOWN TO SEE THE SIDE BAR FEATURE. THE TEXT, IMAGE AND CODE BLURBS HERE ARE FILLER MATERIAL TO HELP DEMONSTRATE THE SIDE BAR FEATURE!
+## Introduction
 
+The sidebar feature allows for better organization and more beautiful presentation of information. By default, presenting long form content with the minima theme can appear boring to the user. The boring nature limits user retention and interest. The author is not just interested in presenting content, but to have the reader enjoy it and consume it fully.
+
+By adding a sidebar, the user will know where they are in the long text and where they are going - this allows for a parallel form of information - like a compass on a map. In the age of short attention spans this compass is not only a navigation tool, but also a nice visual fidget toy for the viewer.
+
+In addition, the sidebar can be used multiple times within a single blog post and is distinct from regular text as the sidebar reduces the content's width. The alternating width adds 'hills' to the content which makes the readers's walk through your page a pleasant hike.
+
+Finally, the elements selected by the author to be as headers in the sidebar allow the authors to emphasize the points the reader nees to care about. The reader may forget all the words in your write up, but they will remember the points.
+
+
+SCROLL DOWN TO SEE THE SIDE BAR FEATURE. THE TEXT, IMAGE AND CODE BLURBS HERE ARE FILLER MATERIAL TO HELP DEMONSTRATE THE SIDE BAR FEATURE!
 
 ## A heading
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur semper metus ut tincidunt. Pellentesque semper odio id tortor dapibus porta. Suspendisse accumsan purus massa, ultricies auctor urna blandit ac. Suspendisse arcu arcu, viverra et gravida in, venenatis sit amet diam. Nam accumsan non nisl id pharetra. Pellentesque in erat nec orci porta sodales. Nulla suscipit libero vitae iaculis facilisis. Morbi interdum, turpis quis euismod vestibulum, ligula nisl posuere ante, id tincidunt orci nibh a metus. Ut vel enim urna. Aenean blandit, nunc ac pellentesque accumsan, lectus eros maximus odio, ac porta lectus nibh sed sapien. Donec tempus gravida tempus. Curabitur malesuada in ipsum quis consectetur. Curabitur ullamcorper ligula quis tortor cursus vestibulum. Nam vehicula ut lacus nec efficitur. Vestibulum lorem lacus, semper vel pharetra et, suscipit at justo.
