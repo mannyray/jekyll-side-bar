@@ -1,7 +1,8 @@
 # jekyll-side-bar
 
 > [!NOTE]
-> To see a live demonstration of the side-bar, please go to [http://webjourney.ca/jekyll-side-bar/jekyll/update/2022/11/11/welcome-to-jekyll.html](http://webjourney.ca/jekyll-side-bar/jekyll/update/2022/11/11/welcome-to-jekyll.html)
+> Head to [jekyll-side-bar.szonov.com](http://jekyll-side-bar.szonov.com) to see a live demo of this plugin!
+
 
 ## Introduction
 

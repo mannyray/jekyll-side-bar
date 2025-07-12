@@ -56,3 +56,10 @@ plugins:
 
 
 plugins_dir: ./../lib
+
+
+
+destination: ../docs/
+
+include:
+  - CNAME
