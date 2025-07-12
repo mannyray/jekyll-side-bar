@@ -1,7 +1,7 @@
 # jekyll-side-bar
 
 > [!NOTE]
-> Head to [jekyll-side-bar.szonov.com](http://jekyll-side-bar.szonov.com) to see a live demo of this plugin!
+> Head to [jekyll-side-bar.szonov.com](https://jekyll-side-bar.szonov.com) to see a live demo of this plugin!
 
 
 ## Introduction
